@@ -89,21 +89,21 @@ void WHILE() {
   emit("(L%d)\n", whileEnd);
 }
 void IF() {
-  int ifBegin = nextLabel();
+  int elselabel = nextLabel();
   int ifEnd = nextLabel();
-  emit("(L%d)\n", ifBegin);
+  
   skip("if");
   skip("(");
   int e = E();
-  emit("goif T%d L%d\n",e, ifEnd);
   skip(")");
+  emit("ifnot T%d goto L%d\n",e, elselabel);
   STMT();
+  emit("if t%d goto L%d\n", e,ifEnd);
   if(isNext("else")){
+    emit("(L%d)\n",elselabel);
     skip("else");
     STMT();
   }
-
-  emit("goto L%d\n", ifBegin);
   emit("(L%d)\n", ifEnd);
 }
 void STMT() {
