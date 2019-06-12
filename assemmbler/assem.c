@@ -54,8 +54,8 @@ int main(void)
 		fgets(code,40,file1);
 		if(code[0]=='(')
 		{
-			sscanf(code,"(%[^)])",sym[k].b);  //sscanf(code,"(%[^)])",word); 
-			sym[k].fnum=flag;			 //sym[k].b=word;
+			sscanf(code,"(%[^)])",sym[k].b);  
+			sym[k].fnum=flag;			 
 			k++;
 		}
 		else
@@ -113,7 +113,7 @@ int main(void)
 int disc(char *d,int k)
 {
 	int i;
-	int static jj=0; //�ϥ��R�A��ƵL�kgcc -o? 
+	int static jj=0; 
 	for(i=0;i<k+jj;i++)
 	{
 		if(strcmp(d,sym[i].b)==0)
@@ -124,7 +124,7 @@ int disc(char *d,int k)
 	jj++;
 	return sym[i].fnum;
 }
-char * disd(char *d,int thing) //�P�_�F��Ǧ^�Ʀr 
+char * disd(char *d,int thing) //判斷東西傳回數字 
 {
 	int i;
 	for(i=0;i<28;i++)
@@ -146,7 +146,7 @@ char * disd(char *d,int thing) //�P�_�F��Ǧ^�Ʀr
 		}
 	}
 }
-char * num2bin(int num,char *biochar) //�N�Ʀr��2�i��
+char * num2bin(int num,char *biochar) //將數字轉2進位
 {
 	int bio[16];
 	int i;
